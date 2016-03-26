@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd\\" >
+
+<hibernate-reverse-engineering>
+    <schema-selection match-schema="public"/>
+    <table-filter match-name="spatial_ref_sys" exclude="true" />
+    <table-filter match-name="geometry*" exclude="true" />
+    <table-filter match-name="raster_columns" exclude="true" />
+    <table-filter match-name="geography_columns" exclude="true" />
+    <table-filter match-name="geometry_columns" exclude="true" />
+    <table-filter match-name="raster_overviews" exclude="true" />
+    <table-filter match-name="airports_us" exclude="true" />
+</hibernate-reverse-engineering>
