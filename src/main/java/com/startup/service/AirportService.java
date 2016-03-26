@@ -1,6 +1,6 @@
 package com.startup.service;
 
-import com.startup.entity.AirportsUs;
+import com.startup.vo.GeometryDataVO;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface AirportService {
 
-    public List<AirportsUs> getAllAirports();
+    public List<GeometryDataVO> getAllAirports();
 }

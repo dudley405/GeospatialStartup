@@ -24,8 +24,6 @@ import javax.persistence.Table;
 public class AirportsUs implements Serializable {
 
      private int id;
-    @JsonSerialize(using = PointToJsonSerializer.class)
-    @JsonDeserialize(using = JsonToPointDeserializer.class)
      private Geometry geom;
      private Long airprtx010;
      private String feature;
