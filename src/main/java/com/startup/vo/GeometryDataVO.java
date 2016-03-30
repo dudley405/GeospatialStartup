@@ -42,6 +42,12 @@ public class GeometryDataVO {
                     field.setAccessible(true);
                     if(field.getName() != null && field.get(object) != null && !field.getName().equals("geom")) {
                         properties.put(field.getName(), field.get(object).toString());
+                    } else if (field.getName().equals("geom")) {
+                        if (geometry.getCoordinates().length == 1) {
+                            properties.put("CoordinateType", "point");
+                            properties.put("Lat", String.valueOf(geometry.getCoordinate().getOrdinate(1)));
+                            properties.put("Long", String.valueOf(geometry.getCoordinate().getOrdinate(0)));
+                        }
                     }
                 }
             }
