@@ -1,8 +1,8 @@
 package com.startup.entity;
 // Generated Mar 30, 2016 6:04:58 PM by Hibernate Tools 5.1.0.Alpha1
 
-
 import com.vividsolutions.jts.geom.Geometry;
+import io.searchbox.annotations.JestId;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @Table(name="solar_radiation_latilt"
     ,schema="public"
 )
-public class SolarRadiationLatilt implements java.io.Serializable {
+public class SolarRadiationLatilt implements java.io.Serializable, BaseEntity {
 
-
+    @JestId
      private long id;
      private Geometry geom;
      private Long gridcode;

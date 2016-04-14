@@ -9,7 +9,7 @@
     <table-filter match-name="geography_columns" exclude="true" />
     <table-filter match-name="geometry_columns" exclude="true" />
     <table-filter match-name="raster_overviews" exclude="true" />
-    <table-filter match-name="airports_us" exclude="true" />
-    <table-filter match-name="religious" exclude="true" />
-    <table-filter match-name="rainfall" exclude="true" />
+    <table-filter match-name="solar_radiation_ghi" exclude="true" />
+    <table-filter match-name="solar_radiation_dni" exclude="true" />
+    <table-filter match-name="solar_radiation_latilt" exclude="true" />
 </hibernate-reverse-engineering>

@@ -2,14 +2,16 @@ package com.startup.service.impl;
 
 import com.startup.entity.SolarRadiationLatilt;
 import com.startup.repository.SolarRadiationRepository;
+import com.startup.service.ElasticSearchService;
+import com.startup.service.FeatureService;
 import com.startup.service.SolarRadiationService;
-import com.startup.vo.GeometryDataVO;
-import org.elasticsearch.common.collect.Lists;
+import org.geojson.Feature;
+import org.geojson.FeatureCollection;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,20 +22,20 @@ import java.util.List;
 public class SolarRadiationServiceImpl implements SolarRadiationService {
 
     @Resource
-    SolarRadiationRepository solarRadiationRepository;
+    ElasticSearchService elasticSearchService;
+
+    @Resource
+    FeatureService featureService;
 
     @Override
-    public List<GeometryDataVO> getAllData() {
-        List<GeometryDataVO> geometryDataVOs = new ArrayList<GeometryDataVO>();
-        List<SolarRadiationLatilt> data = Lists.newArrayList(solarRadiationRepository.findAll());
+    public FeatureCollection getAllData() throws IOException {
+        FeatureCollection features = new FeatureCollection();
 
-        for (SolarRadiationLatilt dataPoint : data) {
-            GeometryDataVO vo = new GeometryDataVO();
-            vo.setGeometry(dataPoint.getGeom());
-            vo.setProperties(dataPoint);
-            geometryDataVOs.add(vo);
+        for (SolarRadiationLatilt dataPoint : elasticSearchService.getAll()) {
+            Feature feature = featureService.buildEntityFeature(dataPoint);
+            features.add(feature);
         }
 
-        return geometryDataVOs;
+        return features;
     }
 }
