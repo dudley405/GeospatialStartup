@@ -3,10 +3,7 @@ package com.startup.helper;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.vividsolutions.jts.geom.*;
 
 import java.io.IOException;
@@ -17,7 +14,7 @@ import java.util.List;
 /**
  * Created by Justin on 4/8/2016.
  */
-public class JsonToPolygonDeserializer implements JsonDeserializer<Polygon> {
+public class JsonToPolygonDeserializer extends JsonDeserializer<Polygon>  {
 
     private final static GeometryFactory geometryFactory = new GeometryFactory(new PrecisionModel(), 26910);
 
@@ -30,7 +27,7 @@ public class JsonToPolygonDeserializer implements JsonDeserializer<Polygon> {
         return value;
     }
 
-    @Override
+   /* @Override
     public Polygon deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         try {
             List<Coordinate> polyCoords = new ArrayList<Coordinate>();
@@ -53,5 +50,10 @@ public class JsonToPolygonDeserializer implements JsonDeserializer<Polygon> {
         catch(Exception e){
             return null;
         }
+    }*/
+
+    @Override
+    public Polygon deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+        return null;
     }
 }

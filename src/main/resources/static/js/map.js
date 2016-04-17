@@ -1,4 +1,4 @@
-var map = L.map('map').setView([51.505, -0.09], 3);
+var map = L.map('map').setView([41.29,-96.36], 3);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -14,8 +14,11 @@ var states = serverResponse.features;
 L.geoJson(states, {
     style: function(feature) {
         switch (feature.properties.potential) {
-            case 'Good': return {color: "#00ff00"};
-            case 'Moderate':   return {color: "#ff0000"};
+            case 'Excellent': return {color: "#E82C0C", fillOpacity: 0.5, stroke:false};
+            case 'Good':   return {color: "#FF530D"};
         }
+
+     stroke: false;
+     opacity: 0.2;
     }
 }).addTo(map);
